@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BRRR Deal Finder</title>
+  <style>
+   body{font-family:sans-serif;padding:1em}
+   input{width:100%;padding:0.5em;margin:1em 0}
+   .card{border:1px #ccc solid;padding:1em;margin:1em 0}
+  </style>
+</head>
+<body>
+  <h1>BRRR Deal Finder</h1>
+  <form method="post">
+    <input name="url" placeholder="Paste Rightmove search URL" required/>
+    <button type="submit">Scrape Listings</button>
+  </form>
+  {% for item in listings %}
+  <div class="card">
+    <h2>{{ item.title }}</h2>
+    <p><strong>Price:</strong> {{ item.price }}</p>
+    <p><strong>Tags:</strong> {{ item.tags }}</p>
+    <a href="{{ item.link }}" target="_blank">View on Rightmove</a>
+  </div>
+  {% endfor %}
+</body>
+</html>
